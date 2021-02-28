@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import FormField from "../Form/FormField";
 import Form from "../Form/Form";
 import FormAction from "../Form/FormAction";
+import FormChecked from "../Form/FormChecked";
+import AlternativeOpcion from "../Form/AlternativeOpcion";
+
 function Login() {
     const [formData , setFormData] = useState({
         username:"",
@@ -14,7 +17,7 @@ function Login() {
         console.log(formData);
     }
     return(
-        <Form>
+        <Form titulo="Ingresar" >
             <FormField 
             caption="Usuario"
             type="text"
@@ -26,13 +29,20 @@ function Login() {
             </FormField>
             <FormField 
             caption="Contraseña"
-            type="text"
+            type="password"
             id="password"
             name="password"
             value={formData.password}
             onChange={myOnChange}>
                 
             </FormField>
+            <FormChecked
+                type="checkbox" 
+                id="cbox1" 
+                value="first_checkbox"
+                description="Recordar los datos"
+            >
+            </FormChecked> 
             <FormAction
             caption="Iniciar"
             onClick={
@@ -49,6 +59,13 @@ function Login() {
             }
             >
             </FormAction>
+            <AlternativeOpcion
+                opcion ="¿No tienes una cuenta? Crea una."
+            >
+
+            </AlternativeOpcion>
+            
+            
         </Form>
     )
     
