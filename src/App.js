@@ -1,18 +1,25 @@
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import "./App.css";
 import  Login from "./components/Login/Login";
+import  ToDo  from "./components/ToDo/ToDo";
 function App() {
-
-  const styles = [
-    "App", "flex", "justify-center","items-center","p-5"
-  ]
-
   return (
-    <div className={styles.join(" ")}>
-      
-      <Login>
-
-      </Login>
-    </div>
+    <Router>
+      <Switch>
+          <Route  exact path="/LoginApp/ToDo" >
+            <ToDo/>
+          </Route>
+          <Route exact path="/LoginApp" >
+            <Login/>
+          </Route>
+      </Switch>
+    </Router>
   );
 
   

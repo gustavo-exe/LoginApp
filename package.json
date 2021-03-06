@@ -1,5 +1,5 @@
 {
-  "homepage":"https://gustavo-exe.github.io/LoginApp",
+  "homepage": "https://gustavo-exe.github.io/LoginApp",
   "name": "login-app",
   "version": "0.1.0",
   "private": true,
@@ -10,17 +10,17 @@
     "@testing-library/user-event": "^12.7.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.0"
   },
   "scripts": {
-    "predeply":"npm run build",
-    "deploy":"gh-pages -d build",
+    "predeply": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
-    
   },
   "eslintConfig": {
     "extends": [
