@@ -1,0 +1,23 @@
+.check
+{
+    width: 2rem;
+    height: 2rem;
+    margin: 0% 0.5% 0% 0.5%;
+    background-color: transparent;
+    border-color: tomato;
+    color: teal;
+}
+
+.GlassEffect
+{
+    background: linear-gradient(134.38deg, rgba(255, 255, 255, 0.5) 5.91%, rgba(255, 255, 255, 0.2) 74.73%);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.253);
+    -webkit-backdrop-filter: blur( 8.5px );
+    border-radius: 10px;
+}
+
+.striked
+{
+    text-decoration:line-through;
+    color: rgba(116, 113, 113, 0.5);
+}

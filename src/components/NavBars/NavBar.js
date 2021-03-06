@@ -18,7 +18,7 @@ function NavBar() {
 
     return(
         <nav>
-            <h1>Name</h1>
+            <h1 className="font-bold">Tareas por hacer.</h1>
 
             <ul>
                 {navBarItems}

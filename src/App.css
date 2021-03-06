@@ -1,6 +1,6 @@
 .App {
   
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(180deg, rgba(217, 175, 217, 0.42) 0%, rgba(96, 209, 221, 0.534) 100%);
 }
 Form
