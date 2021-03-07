@@ -11,6 +11,7 @@
 Construido con react [Create React App](https://es.reactjs.org/docs/create-a-new-react-app.html).
 ## Acerca del proyecto
 El estilo **Glassmorphism**, se lleva toda la atencion en este proyecto construido con componentes react.
+Es una aplicacion que contiene un login y la cual te lleva a un ToDo, para organizar tus tareas.
 ## Responsive Mockup
 ![Mockup](./src/images/Mockup.jpg)
 ![Colores](./src/images/PaletaDeColores.png)

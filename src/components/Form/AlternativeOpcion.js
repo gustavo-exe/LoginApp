@@ -7,7 +7,7 @@ function AlternativeOpcion({opcion}) {
     return(
         <div className={contenedor.join(" ")}>
             
-            <a className="font-bold">
+            <a href="/" className="font-bold">
                 {opcion}
             </a>
             
