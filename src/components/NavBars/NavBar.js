@@ -2,7 +2,7 @@ import NavBarItem from "./NavBarItem";
 import "./NavBar.css";
 function NavBar() {
     let dummyData =[
-        {etiqueta: "Cerrar sesion", enlace:"/LoginApp"}
+        {etiqueta: "Cerrar sesion", enlace:"/"}
     ];
 
     let navBarItems = dummyData.map((elemento, indice) =>

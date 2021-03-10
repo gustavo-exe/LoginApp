@@ -22,7 +22,7 @@ function Login() {
     const history = useHistory();
     const cambioDePagina = (username) => 
     {   
-        history.push('/LoginApp/ToDo'); 
+        history.push('/ToDo'); 
         alert(`!Bievenido ${username}!`)
     };
 
