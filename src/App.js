@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
@@ -9,7 +9,7 @@ import  Login from "./components/Login/Login";
 import  ToDo  from "./components/ToDo/ToDo";
 function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL} >
+    <Router >
       <Switch>
           <Route  exact path="/ToDo" >
             <ToDo/>

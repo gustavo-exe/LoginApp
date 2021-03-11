@@ -1,5 +1,4 @@
 {
-  "homepage": "https://gustavo-exe.github.io/LoginApp",
   "name": "login-app",
   "version": "0.1.0",
   "private": true,
@@ -16,8 +15,6 @@
     "web-vitals": "^1.1.0"
   },
   "scripts": {
-    "predeply": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",

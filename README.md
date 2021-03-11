@@ -1,8 +1,15 @@
 <h1 align="center"> Login App</h1>
 <div align="center">
+   Deployment: 
+</div>
+<div align="center">
   <h3>
     <a href="https://gustavo-exe.github.io/LoginApp/">
-      Demo
+      GithHub Pages
+    </a>
+    <span> | </span>
+    <a href="https://loginapp-177ba.web.app/">
+      Firebase
     </a>
   </h3>
 </div>
