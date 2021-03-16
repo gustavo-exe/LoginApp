@@ -1,7 +1,7 @@
 import { MdDelete} from 'react-icons/md';
 import "./ToDo.css";
 
-function ToDoListItem({descripcion, id, completed, doneHandler, deleteHandler})
+function ToDoListItem({descripcion, id, fb_id ,completed, doneHandler, deleteHandler})
 {
     //Estilos
     const inputStyle =[
@@ -12,10 +12,10 @@ function ToDoListItem({descripcion, id, completed, doneHandler, deleteHandler})
     ]
     
     const onClick = ()=>{
-        doneHandler(id);
+        doneHandler(fb_id);
     }
     const onDeleteClick = ()=>{
-        deleteHandler(id);
+        deleteHandler(fb_id);
     }
     
     const tacharTexto = (completed)?" striked": " ";
@@ -36,6 +36,7 @@ function ToDoList({toDos, doneHandler, deleteHandler}) {
                 key={elemento.doneHandlerid}
                 descripcion={elemento.description}
                 id={elemento.id}
+                fb_id={elemento.fb_id}
                 completed={elemento.completed}
                 doneHandler={doneHandler}
                 deleteHandler={deleteHandler}

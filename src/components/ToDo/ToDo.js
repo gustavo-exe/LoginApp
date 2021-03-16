@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "../NavBars/NavBar";
 import NewTodo from "./NewTodo";
 import ToDoList from "./ToDoList";
+
+import FireBaseInit from "../../FireBaseInit";
 
 function ToDo() {
     //Estilos
@@ -13,8 +15,51 @@ function ToDo() {
         {
             todos:[],
             nuevaToDo:"",
+            waiting:false
         }
     );
+
+    //Renderizacion de componentes.
+    useEffect(
+        ()=>
+        {
+            const todosRef = FireBaseInit.database().ref('todos').orderByKey().limitToLast(100);
+            todosRef.on('child_added', (snapshot) => 
+            {
+                let newTodo = { ...snapshot.val(), fb_id: snapshot.key };
+                let newTodos = toDoDato.todos;
+                newTodos.push(newTodo);
+                setToDoDato({...toDoDato, todos: newTodos});
+                //setTodoData({...todoData, todos: newTodos});
+            });
+            todosRef.on('child_removed', (snapshot)=>
+            {
+                const deletedKey = snapshot.key;
+                let newTodos = toDoDato.todos.filter(o=>{
+                    return o.fb_id !==deletedKey;
+                });
+                setToDoDato({...toDoDato, todos: newTodos});
+            });
+            todosRef.on('child_changed', (snapshot) => 
+            {
+                const changedKey = snapshot.key;
+                const data = snapshot.val();
+                console.log(data);
+                let newTodos = toDoDato.todos.map(o => 
+                    {
+                    if (o.fb_id === changedKey) 
+                    {
+                        o = {...data, fb_id:changedKey};
+                    }
+                return o;
+                });
+                setToDoDato({...toDoDato, todos: newTodos});
+            });
+            
+            return ()=>{todosRef.off();}
+
+        }, []);
+    
     //Crear una nueva nota desde el input
     const InsertarUnaNota = (elemento) =>
     {
@@ -31,30 +76,33 @@ function ToDo() {
             completed:false,
             id : new Date().getTime()
         };
-        let newTodos = toDoDato.todos;
-        newTodos.push(newToDo);
-    
-        setToDoDato({todos:newTodos, nuevaToDo: ""});
+        FireBaseInit.database().ref("todos").push(newToDo);
     }
 
     //Acciones
-    const DoneHandler = (id)=>{
-        const newTodos = toDoDato.todos.map((elemento)=>{
-        if(elemento.id === id){
-            elemento.completed = !elemento.completed;
-        }
-        return elemento;
+    const DoneHandler = (id)=>
+    {
+        const ref = FireBaseInit.database().ref("todos")
+        const fbTodo = ref.child(id);
+        const lcTodo = toDoDato.todos.find( (o)=>
+        {
+            return o.fb_id === id;
         });
-    
-        setToDoDato({...toDoDato, todos:newTodos});
+        
+        fbTodo.update(
+        {
+            "completed": !lcTodo.completed
+        });
     };
     
     const DeleteHandler = (id)=>{
-        const newTodos = toDoDato.todos.filter((elemento) => {
-            return elemento.id !==id;
+        const ref = FireBaseInit.database().ref("todos")
+        const fbTodo = ref.child(id);
+        const lcTodo = toDoDato.todos.find((o) => 
+        {
+            return o.fb_id === id;
         });
-    
-        setToDoDato({ ...toDoDato, todos: newTodos });
+        fbTodo.remove();
     }
 
     return (
